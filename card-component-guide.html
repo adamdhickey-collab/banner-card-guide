@@ -258,7 +258,7 @@
       min-height: 36px;
       display: flex;
       align-items: center;
-      padding-top: 10px;
+      padding-top: 14px;
     }
 
     /* ============================================================
@@ -327,54 +327,62 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding-top: 14px;
     }
 
     /* ============================================================
-       REFERENCE CARD
+       REFERENCE CARD — ANNOTATED
     ============================================================ */
-    .ref-card {
-      background: #fff;
-      border: 2px solid #0160af;
-      padding: 24px;
+
+    /* 2/3 annotation area + 1/3 card */
+    .ref-layout {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      align-items: stretch;
     }
 
-    .ref-card__heading {
-      font-size: 13px;
-      font-weight: 700;
-      color: #0160af;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #0160af;
+    .ref-anno-col {
+      position: relative;
     }
 
-    .ref-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-      margin-bottom: 20px;
+    .ref-anno-item {
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      transform: translateY(-50%);
+      pointer-events: none;
     }
-    .ref-table th {
-      text-align: left;
-      padding: 8px 12px;
-      background: #eef2f8;
-      font-weight: 700;
+
+    .ref-anno-label {
       font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #444;
-      border-bottom: 1px solid #d0d8e8;
+      font-weight: 600;
+      color: #5477a0;
+      white-space: nowrap;
+      text-align: right;
+      line-height: 1.4;
+      letter-spacing: 0.2px;
     }
-    .ref-table td {
-      padding: 9px 12px;
-      color: #555;
-      border-bottom: 1px solid #eee;
-      vertical-align: middle;
+
+    .ref-anno-arrow {
+      display: flex;
+      align-items: center;
+      margin-left: 14px;
+      flex-shrink: 0;
     }
-    .ref-table .field-name {
-      font-weight: 700;
-      color: #1a1a1a;
+    .ref-anno-arrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: #5477a0;
+    }
+    .ref-anno-arrow::after {
+      content: '';
+      display: block;
+      border-top: 3px solid transparent;
+      border-bottom: 3px solid transparent;
+      border-left: 5px solid #5477a0;
     }
 
     .count-max {
@@ -382,31 +390,25 @@
       background: #fec938;
       color: #1a1a1a;
       font-weight: 800;
-      font-size: 12px;
-      padding: 2px 8px;
+      font-size: 11px;
+      padding: 2px 7px;
+      white-space: nowrap;
     }
 
-    .ref-example {
-      background: #f5f7fb;
-      border-left: 3px solid #0160af;
-      padding: 12px 16px;
+    .ref-type-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #999;
+      margin-bottom: 14px;
     }
-    .ref-example p {
-      font-size: 12px;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 6px;
-    }
-    .ref-example p:last-child { margin-bottom: 0; }
-    .ref-example strong { color: #1a1a1a; }
 
     .ref-note {
       font-size: 12px;
       color: #777;
       line-height: 1.65;
       margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid #ddd;
     }
 
     /* ============================================================
@@ -749,62 +751,86 @@
     ====================================================== -->
     <div class="section">
       <div class="type-badge" style="background: #555;">Reference</div>
-      <div class="section-title">Character Count Limits — Both Card Types</div>
-      <p class="breakpoint-note">Use these limits as Sitecore field validators. "Max" is the hard limit; "Recommended" is the editorial sweet spot.</p>
+      <div class="section-title">Character Count Limits</div>
+      <p class="breakpoint-note">Each card shown at actual size with field limits annotated. Use these as hard limits in Sitecore field validators.</p>
 
-      <div class="card-grid-wrap">
-      <div class="ref-card">
-        <div class="ref-card__heading">Type A &amp; Type B &mdash; Shared Character Count Limits</div>
-
-        <table class="ref-table">
-          <thead>
-            <tr>
-              <th>Field</th>
-              <th>Recommended</th>
-              <th>Hard Max</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="field-name">Title</td>
-              <td>15–35 chars</td>
-              <td><span class="count-max">45</span></td>
-              <td>Titles over ~30 chars will wrap to 2 lines</td>
-            </tr>
-            <tr>
-              <td class="field-name">Description</td>
-              <td>80–150 chars</td>
-              <td><span class="count-max">200</span></td>
-              <td>Type A cards tend to read better with shorter copy</td>
-            </tr>
-            <tr>
-              <td class="field-name">Primary CTA Button</td>
-              <td>18–28 chars</td>
-              <td><span class="count-max">35</span></td>
-              <td>Applies to both card types</td>
-            </tr>
-            <tr>
-              <td class="field-name">Secondary Link</td>
-              <td>18–28 chars</td>
-              <td><span class="count-max">35</span></td>
-              <td>Optional on both types. Include a trailing › chevron.</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="ref-example">
-          <p><strong>Title at max (45 chars):</strong><br>"Send and Receive Money Safely with Zelle® App"</p>
-          <p><strong>Description at max (200 chars):</strong><br>"With Bill Pay, control when and how you pay your bills — plus, pay individuals, companies, send a personalized gift check or donate to your favorite charity. Set up recurring payments with ease and peace of mind."</p>
-          <p><strong>Primary CTA at max (35 chars):</strong><br>"View QuickStep Business Loan Details"</p>
-          <p><strong>Secondary Link at max (35 chars):</strong><br>"Watch the electronic statement &amp; notices demo"</p>
+      <!-- TYPE A -->
+      <p class="ref-type-label">Type A — Rectangular Image</p>
+      <div class="ref-layout">
+        <div class="ref-anno-col">
+          <div class="ref-anno-item" id="anno-a-title">
+            <span class="ref-anno-label">Title — max 65 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+          <div class="ref-anno-item" id="anno-a-desc">
+            <span class="ref-anno-label">Description — max 200 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+          <div class="ref-anno-item" id="anno-a-cta">
+            <span class="ref-anno-label">Primary CTA — max 40 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+          <div class="ref-anno-item" id="anno-a-sec">
+            <span class="ref-anno-label">Secondary link — max 40 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
         </div>
+        <div class="card-a ref-card-a">
+          <div class="card-a__img-wrap">
+            <div class="card-a__img-placeholder img-1">600 × 338px image</div>
+          </div>
+          <div class="card-a__body">
+            <h3 class="card-a__title">Equipment &amp; Term Loans for Small and Growing Businesses</h3>
+            <p class="card-a__desc">Purchase or refinance your business equipment, increase working capital, or invest in long-term growth with flexible loan options tailored to your business size, industry, and goals.</p>
+            <div class="card-a__actions">
+              <a href="#" class="btn-primary">QuickStep Small Business Loan Application</a>
+            </div>
+            <div class="card-a__secondary">
+              <a href="#" class="link-secondary">Watch QuickStep Small Business Loan Demo <span class="chev" aria-hidden="true">›</span></a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /ref-layout -->
 
-        <p class="ref-note">
-          Secondary link is optional on both card types. When omitted, an empty reserved zone maintains button alignment across all cards in the row.
-        </p>
-      </div><!-- /ref-card -->
-      </div><!-- /card-grid-wrap -->
+      <!-- TYPE B -->
+      <p class="ref-type-label" style="margin-top: 40px;">Type B — Circular Image, Centered</p>
+      <div class="ref-layout">
+        <div class="ref-anno-col">
+          <div class="ref-anno-item" id="anno-b-title">
+            <span class="ref-anno-label">Title — max 65 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+          <div class="ref-anno-item" id="anno-b-desc">
+            <span class="ref-anno-label">Description — max 200 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+          <div class="ref-anno-item" id="anno-b-cta">
+            <span class="ref-anno-label">Primary CTA — max 40 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+          <div class="ref-anno-item" id="anno-b-sec">
+            <span class="ref-anno-label">Secondary link — max 40 chars</span>
+            <span class="ref-anno-arrow"></span>
+          </div>
+        </div>
+        <div class="card-b ref-card-b">
+          <div class="card-b__img-wrap">
+            <div class="card-b__img-placeholder img-7">240×240</div>
+          </div>
+          <div class="card-b__content">
+            <h3 class="card-b__title">Bank anywhere, anytime — Mobile banking for iPhone® and Android</h3>
+            <p class="card-b__desc">Reduce clutter and keep financial documents safe and accessible with electronic statements. Get notified when your statements, notices and tax documents are available and access them anytime online.</p>
+            <div class="card-b__cta">
+              <a href="#" class="btn-primary">Learn about Banner Online Mobile Banking</a>
+            </div>
+            <div class="card-b__secondary">
+              <a href="#" class="link-secondary">Watch the Banner Mobile Banking Overview <span class="chev" aria-hidden="true">›</span></a>
+            </div>
+          </div>
+        </div>
+      </div><!-- /ref-layout -->
+
+      <p class="ref-note">Secondary link is optional on both card types. When omitted, an empty reserved zone maintains button alignment across all cards in the row.</p>
     </div><!-- /section -->
 
   </div><!-- /page -->
@@ -882,9 +908,9 @@
           <h3>Character Count Validation in Sitecore</h3>
           <ul>
             <li>Apply Sitecore's built-in <strong>"Maximum length" field validator</strong> to each content field in the data template</li>
-            <li>Title field: set max length to <code>45</code> (covers both types; stricter editorial guidance handles the 40-char Type A limit)</li>
+            <li>Title field: set max length to <code>65</code></li>
             <li>Description field: set max length to <code>200</code></li>
-            <li>Link text fields: set max length to <code>40</code></li>
+            <li>Link text fields (CTA and secondary): set max length to <code>40</code></li>
             <li>Consider adding a <strong>Warning</strong> threshold (e.g., 80% of max) so authors see a caution before hitting the hard limit</li>
           </ul>
 
@@ -922,5 +948,30 @@
   </div><!-- /dev-notes -->
 
 
+  <script>
+    function positionAnnotations() {
+      function align(annoId, targetSelector) {
+        var anno = document.getElementById(annoId);
+        if (!anno) return;
+        var col = anno.closest('.ref-anno-col');
+        var target = document.querySelector(targetSelector);
+        if (!col || !target) return;
+        var colRect = col.getBoundingClientRect();
+        var targetRect = target.getBoundingClientRect();
+        var center = (targetRect.top + targetRect.height / 2) - colRect.top;
+        anno.style.top = center + 'px';
+      }
+      align('anno-a-title', '.ref-card-a .card-a__title');
+      align('anno-a-desc',  '.ref-card-a .card-a__desc');
+      align('anno-a-cta',   '.ref-card-a .btn-primary');
+      align('anno-a-sec',   '.ref-card-a .link-secondary');
+      align('anno-b-title', '.ref-card-b .card-b__title');
+      align('anno-b-desc',  '.ref-card-b .card-b__desc');
+      align('anno-b-cta',   '.ref-card-b .btn-primary');
+      align('anno-b-sec',   '.ref-card-b .link-secondary');
+    }
+    document.addEventListener('DOMContentLoaded', positionAnnotations);
+    window.addEventListener('resize', positionAnnotations);
+  </script>
 </body>
 </html>

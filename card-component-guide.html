@@ -42,9 +42,47 @@
       color: var(--color-title);
       line-height: 1.5;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     a { color: inherit; }
+
+    /* ============================================================
+       PAGE HERO
+    ============================================================ */
+    .page-hero {
+      background: #003087;
+      padding: 48px 24px;
+    }
+
+    .page-hero__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .page-hero__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fec938;
+      margin-bottom: 12px;
+    }
+
+    .page-hero h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .page-hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      max-width: 640px;
+    }
 
     /* ============================================================
        PAGE SHELL
@@ -83,7 +121,7 @@
       letter-spacing: 1.5px;
       padding: 4px 10px;
       margin-bottom: 10px;
-      background: #1a5fa8;
+      background: #0160af;
       color: #fff;
     }
 
@@ -130,12 +168,16 @@
       font-weight: 700;
       text-align: center;
       text-decoration: none;
-      border: 2px solid var(--color-cta-border);
+      border: none;
       cursor: pointer;
       transition: background 0.18s ease;
       line-height: 1.3;
     }
     .btn-primary:hover { background: var(--color-cta-bg-hover); }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-primary { transition: none; }
+      .link-secondary { transition: none; }
+    }
 
     .link-secondary {
       display: inline-flex;
@@ -292,19 +334,19 @@
     ============================================================ */
     .ref-card {
       background: #fff;
-      border: 2px solid #1a5fa8;
+      border: 2px solid #0160af;
       padding: 24px;
     }
 
     .ref-card__heading {
       font-size: 13px;
       font-weight: 700;
-      color: #1a5fa8;
+      color: #0160af;
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-bottom: 18px;
       padding-bottom: 12px;
-      border-bottom: 2px solid #1a5fa8;
+      border-bottom: 2px solid #0160af;
     }
 
     .ref-table {
@@ -337,7 +379,7 @@
 
     .count-max {
       display: inline-block;
-      background: #F2A900;
+      background: #fec938;
       color: #1a1a1a;
       font-weight: 800;
       font-size: 12px;
@@ -346,7 +388,7 @@
 
     .ref-example {
       background: #f5f7fb;
-      border-left: 3px solid #1a5fa8;
+      border-left: 3px solid #0160af;
       padding: 12px 16px;
     }
     .ref-example p {
@@ -441,7 +483,7 @@
       font-weight: 700;
     }
 
-    code {
+    .dev-notes code {
       font-family: 'Courier New', 'Consolas', monospace;
       background: #ffffff;
       color: #003087;
@@ -755,7 +797,7 @@
           <p><strong>Title at max (45 chars):</strong><br>"Send and Receive Money Safely with Zelle® App"</p>
           <p><strong>Description at max (200 chars):</strong><br>"With Bill Pay, control when and how you pay your bills — plus, pay individuals, companies, send a personalized gift check or donate to your favorite charity. Set up recurring payments with ease and peace of mind."</p>
           <p><strong>Primary CTA at max (35 chars):</strong><br>"View QuickStep Business Loan Details"</p>
-          <p><strong>Secondary Link at max (40 chars):</strong><br>"Watch the electronic statement &amp; notices demo"</p>
+          <p><strong>Secondary Link at max (35 chars):</strong><br>"Watch the electronic statement &amp; notices demo"</p>
         </div>
 
         <p class="ref-note">
@@ -857,12 +899,12 @@
           <h3>Design Tokens / CSS Variables</h3>
           <ul>
             <li>Define all colours and spacing as CSS custom properties on <code>:root</code> in your SXA theme's <code>base.css</code></li>
-            <li>CTA button background: <code>--color-cta-bg: #F2A900</code></li>
-            <li>CTA hover state: <code>--color-cta-bg-hover: #D99500</code></li>
-            <li>CTA border: <code>2px solid #1a1a1a</code></li>
-            <li>Secondary link: <code>--color-link: #1a5fa8</code></li>
-            <li>Card background: <code>--color-card-bg: #f7f7f7</code></li>
-            <li>Card border: <code>1px solid #dedede</code></li>
+            <li>CTA button background: <code>--color-cta-bg: #fec938</code></li>
+            <li>CTA hover state: <code>--color-cta-bg-hover: #e5b425</code></li>
+            <li>CTA border: <code>none</code></li>
+            <li>Secondary link: <code>--color-link: #0160af</code></li>
+            <li>Card background: <code>--color-card-bg: #ffffff</code></li>
+            <li>Card border: <code>1px solid #d8d8d8</code></li>
           </ul>
 
           <h3>Accessibility</h3>

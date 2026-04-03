@@ -16,7 +16,6 @@
       --color-cta-bg:        #fec938;
       --color-cta-bg-hover:  #e5b425;
       --color-cta-text:      #1a1a1a;
-      --color-cta-border:    transparent;
       --color-link:          #0160af;
       --color-link-hover:    #014d8c;
       --color-card-bg:       #ffffff;
@@ -90,25 +89,7 @@
     .page {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 48px 24px 0;
-    }
-
-    .page-header {
-      margin-bottom: 48px;
-      padding-bottom: 28px;
-      border-bottom: 2px solid #d0d0d0;
-    }
-    .page-header h1 {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--color-heading);
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-    .page-header p {
-      font-size: 14px;
-      color: #666;
-      line-height: 1.6;
+      padding: 48px 24px;
     }
 
     .section { margin-bottom: 60px; }
@@ -129,7 +110,7 @@
       font-size: 20px;
       font-weight: 700;
       color: var(--color-heading);
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
 
     .breakpoint-note {
@@ -174,6 +155,15 @@
       line-height: 1.3;
     }
     .btn-primary:hover { background: var(--color-cta-bg-hover); }
+    .btn-primary:focus-visible {
+      outline: 3px solid #003087;
+      outline-offset: 2px;
+    }
+    .link-secondary:focus-visible {
+      outline: 3px solid #003087;
+      outline-offset: 2px;
+      border-radius: 1px;
+    }
     @media (prefers-reduced-motion: reduce) {
       .btn-primary { transition: none; }
       .link-secondary { transition: none; }
@@ -323,7 +313,7 @@
     .card-b__cta { margin-top: auto; }
 
     .card-b__secondary {
-      min-height: 38px;
+      min-height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -334,10 +324,17 @@
        REFERENCE CARD — ANNOTATED
     ============================================================ */
 
-    /* 2/3 annotation area + 1/3 card */
+    /* two annotated cards side by side */
+    .ref-section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--card-gap);
+    }
+
+    /* 1/3 annotation area + 2/3 card within each column */
     .ref-layout {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 2fr;
       align-items: stretch;
     }
 
@@ -358,7 +355,6 @@
       font-size: 11px;
       font-weight: 600;
       color: #5477a0;
-      white-space: nowrap;
       text-align: right;
       line-height: 1.4;
       letter-spacing: 0.2px;
@@ -383,16 +379,6 @@
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
       border-left: 5px solid #5477a0;
-    }
-
-    .count-max {
-      display: inline-block;
-      background: #fec938;
-      color: #1a1a1a;
-      font-weight: 800;
-      font-size: 11px;
-      padding: 2px 7px;
-      white-space: nowrap;
     }
 
     .ref-type-label {
@@ -509,7 +495,7 @@
     .img-1, .img-2, .img-3, .img-4, .img-5,
     .img-6, .img-7, .img-8, .img-9 { background: #003087; }
 
-    .section-divider { height: 1px; background: #d0d0d0; margin: 0 0 60px; }
+    .section-divider { height: 1px; background: #d0d0d0; margin: 40px 0 60px; }
   </style>
 </head>
 <body>
@@ -643,7 +629,7 @@
         <!-- B-1 | Title: 8 chars (very short) | Desc: short | Secondary: YES -->
         <div class="card-b">
           <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-6">240×240</div>
+            <div class="card-b__img-placeholder img-6">240 × 240px</div>
           </div>
           <div class="card-b__content">
             <h3 class="card-b__title">Bill Pay</h3>
@@ -660,7 +646,7 @@
         <!-- B-2 | Title: 27 chars (medium-long) | Desc: medium | Secondary: NO -->
         <div class="card-b">
           <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-7">240×240</div>
+            <div class="card-b__img-placeholder img-7">240 × 240px</div>
           </div>
           <div class="card-b__content">
             <h3 class="card-b__title">Account and Security Alerts</h3>
@@ -676,7 +662,7 @@
         <!-- B-3 | Title: 34 chars / 2-line (near max) | Desc: short | Secondary: YES -->
         <div class="card-b">
           <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-8">240×240</div>
+            <div class="card-b__img-placeholder img-8">240 × 240px</div>
           </div>
           <div class="card-b__content">
             <h3 class="card-b__title">Send and Receive Money with Zelle®</h3>
@@ -693,7 +679,7 @@
         <!-- B-4 | Title: 12 chars (short) | Desc: long (stress test) | Secondary: YES -->
         <div class="card-b">
           <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-9">240×240</div>
+            <div class="card-b__img-placeholder img-9">240 × 240px</div>
           </div>
           <div class="card-b__content">
             <h3 class="card-b__title">Go paperless</h3>
@@ -710,7 +696,7 @@
         <!-- B-5 | Title: 10 chars (short) | Desc: longest | Secondary: NO -->
         <div class="card-b">
           <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-1">240×240</div>
+            <div class="card-b__img-placeholder img-1">240 × 240px</div>
           </div>
           <div class="card-b__content">
             <h3 class="card-b__title">Chat with a Live Banking Specialist Online</h3>
@@ -726,7 +712,7 @@
         <!-- B-6 | Title: 21 chars (medium) | Desc: medium | Secondary: YES -->
         <div class="card-b">
           <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-2">240×240</div>
+            <div class="card-b__img-placeholder img-2">240 × 240px</div>
           </div>
           <div class="card-b__content">
             <h3 class="card-b__title">Bank wherever you are</h3>
@@ -754,81 +740,89 @@
       <div class="section-title">Character Count Limits</div>
       <p class="breakpoint-note">Each card shown at actual size with field limits annotated. Use these as hard limits in Sitecore field validators.</p>
 
-      <!-- TYPE A -->
-      <p class="ref-type-label">Type A — Rectangular Image</p>
-      <div class="ref-layout">
-        <div class="ref-anno-col">
-          <div class="ref-anno-item" id="anno-a-title">
-            <span class="ref-anno-label">Title — max 65 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-          <div class="ref-anno-item" id="anno-a-desc">
-            <span class="ref-anno-label">Description — max 200 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-          <div class="ref-anno-item" id="anno-a-cta">
-            <span class="ref-anno-label">Primary CTA — max 40 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-          <div class="ref-anno-item" id="anno-a-sec">
-            <span class="ref-anno-label">Secondary link — max 40 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-        </div>
-        <div class="card-a ref-card-a">
-          <div class="card-a__img-wrap">
-            <div class="card-a__img-placeholder img-1">600 × 338px image</div>
-          </div>
-          <div class="card-a__body">
-            <h3 class="card-a__title">Equipment &amp; Term Loans for Small and Growing Businesses</h3>
-            <p class="card-a__desc">Purchase or refinance your business equipment, increase working capital, or invest in long-term growth with flexible loan options tailored to your business size, industry, and goals.</p>
-            <div class="card-a__actions">
-              <a href="#" class="btn-primary">QuickStep Small Business Loan Application</a>
-            </div>
-            <div class="card-a__secondary">
-              <a href="#" class="link-secondary">Watch QuickStep Small Business Loan Demo <span class="chev" aria-hidden="true">›</span></a>
-            </div>
-          </div>
-        </div>
-      </div><!-- /ref-layout -->
+      <div class="ref-section-grid">
 
-      <!-- TYPE B -->
-      <p class="ref-type-label" style="margin-top: 40px;">Type B — Circular Image, Centered</p>
-      <div class="ref-layout">
-        <div class="ref-anno-col">
-          <div class="ref-anno-item" id="anno-b-title">
-            <span class="ref-anno-label">Title — max 65 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-          <div class="ref-anno-item" id="anno-b-desc">
-            <span class="ref-anno-label">Description — max 200 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-          <div class="ref-anno-item" id="anno-b-cta">
-            <span class="ref-anno-label">Primary CTA — max 40 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-          <div class="ref-anno-item" id="anno-b-sec">
-            <span class="ref-anno-label">Secondary link — max 40 chars</span>
-            <span class="ref-anno-arrow"></span>
-          </div>
-        </div>
-        <div class="card-b ref-card-b">
-          <div class="card-b__img-wrap">
-            <div class="card-b__img-placeholder img-7">240×240</div>
-          </div>
-          <div class="card-b__content">
-            <h3 class="card-b__title">Bank anywhere, anytime — Mobile banking for iPhone® and Android</h3>
-            <p class="card-b__desc">Reduce clutter and keep financial documents safe and accessible with electronic statements. Get notified when your statements, notices and tax documents are available and access them anytime online.</p>
-            <div class="card-b__cta">
-              <a href="#" class="btn-primary">Learn about Banner Online Mobile Banking</a>
+        <!-- TYPE A -->
+        <div>
+          <p class="ref-type-label">Type A — Rectangular Image</p>
+          <div class="ref-layout">
+            <div class="ref-anno-col">
+              <div class="ref-anno-item" id="anno-a-title">
+                <span class="ref-anno-label">Title<br>max 65 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+              <div class="ref-anno-item" id="anno-a-desc">
+                <span class="ref-anno-label">Description<br>max 200 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+              <div class="ref-anno-item" id="anno-a-cta">
+                <span class="ref-anno-label">Primary CTA<br>max 40 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+              <div class="ref-anno-item" id="anno-a-sec">
+                <span class="ref-anno-label">Secondary link<br>max 40 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
             </div>
-            <div class="card-b__secondary">
-              <a href="#" class="link-secondary">Watch the Banner Mobile Banking Overview <span class="chev" aria-hidden="true">›</span></a>
+            <div class="card-a ref-card-a">
+              <div class="card-a__img-wrap">
+                <div class="card-a__img-placeholder img-1">600 × 338px image</div>
+              </div>
+              <div class="card-a__body">
+                <h3 class="card-a__title">Equipment &amp; Term Loans for Small and Growing Businesses</h3>
+                <p class="card-a__desc">Purchase or refinance your business equipment, increase working capital, or invest in long-term growth with flexible loan options tailored to your business size, industry, and goals.</p>
+                <div class="card-a__actions">
+                  <a href="#" class="btn-primary">QuickStep Small Business Loan Application</a>
+                </div>
+                <div class="card-a__secondary">
+                  <a href="#" class="link-secondary">Watch QuickStep Small Business Loan Demo <span class="chev" aria-hidden="true">›</span></a>
+                </div>
+              </div>
             </div>
-          </div>
+          </div><!-- /ref-layout -->
         </div>
-      </div><!-- /ref-layout -->
+
+        <!-- TYPE B -->
+        <div>
+          <p class="ref-type-label">Type B — Circular Image, Centered</p>
+          <div class="ref-layout">
+            <div class="ref-anno-col">
+              <div class="ref-anno-item" id="anno-b-title">
+                <span class="ref-anno-label">Title<br>max 65 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+              <div class="ref-anno-item" id="anno-b-desc">
+                <span class="ref-anno-label">Description<br>max 200 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+              <div class="ref-anno-item" id="anno-b-cta">
+                <span class="ref-anno-label">Primary CTA<br>max 40 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+              <div class="ref-anno-item" id="anno-b-sec">
+                <span class="ref-anno-label">Secondary link<br>max 40 chars</span>
+                <span class="ref-anno-arrow"></span>
+              </div>
+            </div>
+            <div class="card-b ref-card-b">
+              <div class="card-b__img-wrap">
+                <div class="card-b__img-placeholder img-7">240 × 240px</div>
+              </div>
+              <div class="card-b__content">
+                <h3 class="card-b__title">Bank anywhere, anytime — Mobile banking for iPhone® and Android</h3>
+                <p class="card-b__desc">Reduce clutter and keep financial documents safe and accessible with electronic statements. Get notified when your statements, notices and tax documents are available and access them anytime online.</p>
+                <div class="card-b__cta">
+                  <a href="#" class="btn-primary">Learn about Banner Online Mobile Banking</a>
+                </div>
+                <div class="card-b__secondary">
+                  <a href="#" class="link-secondary">Watch the Banner Mobile Banking Overview <span class="chev" aria-hidden="true">›</span></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- /ref-layout -->
+        </div>
+
+      </div><!-- /ref-section-grid -->
 
       <p class="ref-note">Secondary link is optional on both card types. When omitted, an empty reserved zone maintains button alignment across all cards in the row.</p>
     </div><!-- /section -->
@@ -938,7 +932,7 @@
             <li>Every <code>&lt;img&gt;</code> must have a meaningful <code>alt</code> attribute — author-entered in Sitecore's Image field</li>
             <li>CTA button text must be unique per card (screen readers announce all buttons; "Learn more" repeated 6× is not accessible)</li>
             <li>Secondary link chevron (<code>›</code>) should be wrapped in <code>&lt;span aria-hidden="true"&gt;</code> so it is not read aloud</li>
-            <li>Colour contrast: <code>#1a1a1a</code> on <code>#F2A900</code> meets WCAG AA (4.7:1 ratio)</li>
+            <li>Colour contrast: <code>#1a1a1a</code> on <code>#fec938</code> meets WCAG AA (10.5:1 ratio)</li>
           </ul>
 
         </div>
